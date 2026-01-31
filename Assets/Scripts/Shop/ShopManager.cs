@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -10,11 +13,25 @@ public class ShopManager : MonoBehaviour
     TextMeshProUGUI orderText;
     string keyPressed;
     int keyOrdered;
+    private Image _timerImage;
+    private bool _isEndAnimLaunched = false;
+    [SerializeField] private List<Sprite> _maskList;
+    private Image _orderImage;
+    [SerializeField] private Sprite _sushi;
+    [SerializeField] private Sprite _sushiContent;
+    [SerializeField] private Sprite _sushiPoContent;
+    private SpriteRenderer _sushiSprite;
+    [SerializeField] private List<Transform> _masksForSushi;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timerBeforeOrder = Random.Range(0.3f, 3f);
+        timerBeforeOrder = Random.Range(1.3f, 3f);
         orderText = GameObject.Find("OrderText").GetComponent<TextMeshProUGUI>();
+        _timerImage = GameObject.Find("timerImage").GetComponent<Image>();
+        _orderImage = GameObject.Find("OrderImage").GetComponent<Image>();
+        _orderImage.enabled = false;
+        _sushiSprite = GameObject.Find("SushiSprite").GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -28,9 +45,14 @@ public class ShopManager : MonoBehaviour
         if (isOrdered)
         {
             timer += Time.deltaTime;
+            _timerImage.fillAmount = 1 - (timer / timerBeforeLose);
             if (timer >= timerBeforeLose)
             {
-                GameMaster.Instance.EndMiniGame(false);
+                if (!_isEndAnimLaunched)
+                {
+                    StartCoroutine(EndAnim(false));
+                    _isEndAnimLaunched = true;
+                }
             }
 
             if (Input.anyKeyDown)
@@ -42,12 +64,19 @@ public class ShopManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4)) { keyPressed = "4"; }
                 if (keyPressed == keyOrdered.ToString())
                 {
-                    GameMaster.Instance.EndMiniGame(true);
+                    if (!_isEndAnimLaunched)
+                    {
+                        StartCoroutine(EndAnim(true));
+                        _isEndAnimLaunched = true;
+                    }
                 }
                 else
                 {
-                    GameMaster.Instance.EndMiniGame(false);
-
+                    if (!_isEndAnimLaunched)
+                    {
+                        StartCoroutine(EndAnim(false));
+                        _isEndAnimLaunched = true;
+                    }
                 }
             }
         }
@@ -60,7 +89,42 @@ public class ShopManager : MonoBehaviour
                 orderText.text = "Press " + keyOrdered.ToString() + " !";
                 isOrdered = true;
                 timer = 0f;
+                orderText.enabled = false;
+                _orderImage.sprite = _maskList[keyOrdered - 1];
+                _orderImage.enabled = true;
             }
         }
+    }
+
+    private IEnumerator EndAnim(bool won)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject.Find("Bubble").SetActive(false);
+        orderText.enabled = false;
+        _orderImage.enabled = false;
+
+        if (won)
+        {
+            // Sushi content
+            _sushiSprite.sprite = _sushiContent;
+            _masksForSushi[keyOrdered - 1].gameObject.SetActive(true);
+        }
+        else
+        {
+            // Sushi po content
+            _sushiSprite.sprite = _sushiPoContent;
+        }
+
+
+        yield return new WaitForSeconds(2f);
+
+        TransitionCanva.Instance.StartTransition();
+
+        yield return new WaitForSeconds(1.5f);
+
+        GameMaster.Instance.EndMiniGame(won);
+
+        yield return null;
     }
 }

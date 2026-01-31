@@ -10,7 +10,14 @@ public class DeathPlane : MonoBehaviour
 
         if (collision.gameObject.name == "Mask")
         {
-            GameObject.Find("PoussePieceManager").GetComponent<PoussePieceManager>().WinMiniGame();
+            if (GameObject.Find("PoussePieceManager").GetComponent<PoussePieceManager>() != null)
+            {
+                GameObject.Find("PoussePieceManager").GetComponent<PoussePieceManager>().WinMiniGame();
+            }
+            else
+            {
+                GameObject.Find("PoussePieceManager").GetComponent<FakePoussePieceManager>().WinMiniGame();
+            }
         }
 
         Destroy(collision.gameObject);

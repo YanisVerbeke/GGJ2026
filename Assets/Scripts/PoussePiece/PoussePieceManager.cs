@@ -72,6 +72,10 @@ public class PoussePieceManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        TransitionCanva.Instance.StartTransition();
+
+        yield return new WaitForSeconds(1.5f);
+
         GameMaster.Instance.EndMiniGame(won);
 
         yield return null;

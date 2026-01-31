@@ -46,6 +46,11 @@ public class SceneLoader : MonoBehaviour
         StartNextMiniGame(GameMaster.Instance.MiniGameList[Random.Range(0, GameMaster.Instance.MiniGameList.Count)]);
     }
 
+    private void OnEnable()
+    {
+        TransitionCanva.Instance.EndTransition();
+    }
+
     // Update is called once per frame
     /*void Update()
     {
@@ -120,13 +125,11 @@ public class SceneLoader : MonoBehaviour
 
         TransitionCanva.Instance.StartTransition();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         SceneManager.LoadScene(miniGame.indexInBuild);
 
         yield return new WaitForSeconds(0.5f);
-
-        TransitionCanva.Instance.EndTransition();
 
         yield return null;
     }
