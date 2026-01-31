@@ -25,6 +25,7 @@ public class ShopManager : MonoBehaviour
             if(timer >= timerBeforeLose)
             {
                 //Loose
+                GameMaster.Instance.EndMiniGame(false);
             }
 
             if (Input.anyKeyDown)
@@ -48,9 +49,11 @@ public class ShopManager : MonoBehaviour
                 if (keyPressed == orderText.text)
                 {
                     Debug.Log("Win");
+                    GameMaster.Instance.EndMiniGame(true);
                 } else
                 {
                     Debug.Log("Lose !");
+                    GameMaster.Instance.EndMiniGame(false);
                 }
             }
         } else
