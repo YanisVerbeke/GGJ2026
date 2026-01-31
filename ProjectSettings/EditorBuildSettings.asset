@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PoussePieceFINAL.unity
     guid: 030e5d96a98da0143bcbe9182f107220
+  - enabled: 1
+    path: Assets/Scenes/Unmask.unity
+    guid: 9edce5d66760eb744af1bc25c244c6c1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
