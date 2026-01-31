@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PoussePiece.unity
     guid: 1b0c5bbb9220e854cb41fcbe48474c4f
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: 281d37a8d329e3a098dc6c45d0fef0c0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

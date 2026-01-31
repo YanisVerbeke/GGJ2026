@@ -562,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameMaster
   _miniGameList:
   - {fileID: 11400000, guid: 570630596ac7eb041be11596d2c62550, type: 2}
+  - {fileID: 11400000, guid: fbaaf70a8b85456d8b47f0817a783dc9, type: 2}
 --- !u!1 &661039370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b31391294adc36b6f44c043d0fddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  lastBuildIndex: 1
+  lastBuildIndex: 2
 --- !u!4 &1760933070
 Transform:
   m_ObjectHideFlags: 0
