@@ -118,9 +118,15 @@ public class SceneLoader : MonoBehaviour
         stageNumberText.enabled = false;
         stageNameText.enabled = false;
 
-        yield return new WaitForSeconds(0.2f);
+        TransitionCanva.Instance.StartTransition();
+
+        yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(miniGame.indexInBuild);
+
+        yield return new WaitForSeconds(0.5f);
+
+        TransitionCanva.Instance.EndTransition();
 
         yield return null;
     }

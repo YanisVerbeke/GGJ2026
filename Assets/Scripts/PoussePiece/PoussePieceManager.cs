@@ -20,6 +20,11 @@ public class PoussePieceManager : MonoBehaviour
         _timer = _maxTimer;
     }
 
+    private void OnEnable()
+    {
+        TransitionCanva.Instance.EndTransition();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z)) // W parce que qwerty etc
