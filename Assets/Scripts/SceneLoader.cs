@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] int lastBuildIndex;
     TextMeshProUGUI stageNumberText;
+    TextMeshProUGUI stageNameText;
     //TextMeshProUGUI instructionsText;
     TextMeshProUGUI commandsText;
     int stageNumber = 0;
@@ -27,6 +28,7 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
         stageNumberText = GameObject.Find("Stage number").GetComponent<TextMeshProUGUI>();
+        stageNameText = GameObject.Find("Stage Name").GetComponent<TextMeshProUGUI>();
         //instructionsText = GameObject.Find("Instructions").GetComponent<TextMeshProUGUI>();
         commandsText = GameObject.Find("Commands").GetComponent<TextMeshProUGUI>();
         _life1 = GameObject.Find("Life1").GetComponent<Image>();
@@ -34,6 +36,7 @@ public class SceneLoader : MonoBehaviour
         _life3 = GameObject.Find("Life3").GetComponent<Image>();
         _life4 = GameObject.Find("Life4").GetComponent<Image>();
         stageNumberText.enabled = false;
+        stageNameText.enabled = false;
         commandsText.enabled = false;
         _life1.enabled = false;
         _life2.enabled = false;
@@ -106,11 +109,14 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         stageNumberText.text = GameMaster.Instance.CurrentStageNumber.ToString();
+        stageNameText.text = miniGame.displayName;
         stageNumberText.enabled = true;
+        stageNameText.enabled = true;
 
         yield return new WaitForSeconds(2f);
 
         stageNumberText.enabled = false;
+        stageNameText.enabled = false;
 
         yield return new WaitForSeconds(0.2f);
 

@@ -15,4 +15,4 @@ MonoBehaviour:
   indexInBuild: 1
   displayName: "Pousse Pi\xE8ce"
   controls: 0
-  timer: 20
+  timer: 40
