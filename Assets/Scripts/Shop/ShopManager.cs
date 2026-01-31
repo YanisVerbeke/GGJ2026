@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -9,7 +8,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] float timerBeforeLose;
     bool isOrdered;
     TextMeshProUGUI orderText;
-    GameObject target;
     string keyPressed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,22 +26,6 @@ public class ShopManager : MonoBehaviour
             {
                 //Loose
             }
-            /*if (Input.GetMouseButtonDown(0))
-            {
-                target = RaycastDetection();
-                if (target != null)
-                {
-                    if (target.name == orderText.text)
-                    {
-                        //win
-                        Debug.Log("Win !");
-                    } else
-                    {
-                        //lose
-                        Debug.Log("Lose !");
-                    }
-                }
-            }*/
 
             if (Input.anyKeyDown)
             {
@@ -81,20 +63,5 @@ public class ShopManager : MonoBehaviour
                 timer = 0f;
             }
         }
-    }
-
-    GameObject RaycastDetection()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit raycastHit;
-
-        if (Physics.Raycast(ray, out raycastHit, 20f))
-        {
-            if(raycastHit.transform != null && raycastHit.transform.tag == "mask")
-            {
-                return raycastHit.transform.gameObject;
-            }
-        }
-        return null;
     }
 }
