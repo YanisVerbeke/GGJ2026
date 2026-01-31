@@ -23,7 +23,7 @@ public class CoinSpawner : MonoBehaviour
             ActiveCoin(_currentCoin, true);
             _currentCoin = Instantiate(_coinPrefab, new Vector3(Mathf.Clamp((Camera.main.ScreenToViewportPoint(Input.mousePosition).x - 0.5f) * 30f, -5f, 5f), 17f, 6.85f), Quaternion.LookRotation(Vector3.down));
             ActiveCoin(_currentCoin, false);
-            _spawnCooldown = 0.5f;
+            _spawnCooldown = 0.3f;
         }
 
         if (_spawnCooldown > 0f)
