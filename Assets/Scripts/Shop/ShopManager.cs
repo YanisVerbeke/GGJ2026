@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
     bool isOrdered;
     TextMeshProUGUI orderText;
     string keyPressed;
+    int keyOrdered;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,36 +25,23 @@ public class ShopManager : MonoBehaviour
             timer += Time.deltaTime;
             if(timer >= timerBeforeLose)
             {
-                //Loose
                 GameMaster.Instance.EndMiniGame(false);
             }
 
             if (Input.anyKeyDown)
             {
                 keyPressed = Input.inputString;
-                switch (keyPressed)
+                if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1)) {keyPressed = "1";}
+                if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2)) {keyPressed = "2";}
+                if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3)) {keyPressed = "3";}
+                if (Input.GetKeyDown(KeyCode.Keypad4) || Input.GetKeyDown(KeyCode.Alpha4)) {keyPressed = "4";}
+                if (keyPressed == keyOrdered.ToString())
                 {
-                    case "&" :
-                        keyPressed = "1";
-                        break;
-                    case "é" :
-                        keyPressed = "2";
-                        break;
-                    case "\"" :
-                        keyPressed = "3";
-                        break;
-                    case "'" :
-                        keyPressed = "4";
-                        break;
-                }
-                if (keyPressed == orderText.text)
-                {
-                    Debug.Log("Win");
                     GameMaster.Instance.EndMiniGame(true);
                 } else
                 {
-                    Debug.Log("Lose !");
                     GameMaster.Instance.EndMiniGame(false);
+
                 }
             }
         } else
@@ -61,7 +49,8 @@ public class ShopManager : MonoBehaviour
             timer += Time.deltaTime;
             if(timer >= timerBeforeOrder)
             {
-                orderText.text = Random.Range(1,5).ToString();
+                keyOrdered = Random.Range(1,5);
+                orderText.text = "Press " + keyOrdered.ToString() + " !";
                 isOrdered = true;
                 timer = 0f;
             }
