@@ -62,7 +62,7 @@ public class GameMaster : MonoBehaviour
         {
             _currentLives--;
         }
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
     }
 
@@ -71,7 +71,7 @@ public class GameMaster : MonoBehaviour
         Debug.Log("OUI");
         SfxManager.Instance.PlayButton();
         Instance.ResetGame();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void MenuButtonClick()

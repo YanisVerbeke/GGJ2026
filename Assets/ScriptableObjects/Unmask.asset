@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d0a6fade68e4842acbeea627f11bab, type: 3}
   m_Name: Unmask
   m_EditorClassIdentifier: Assembly-CSharp::MiniGameScriptableObject
-  indexInBuild: 4
-  displayName: Unmask
+  indexInBuild: 5
+  displayName: Impostor
   controls: 0
   timer: 5

@@ -19,6 +19,6 @@ public class ButtonHelper : MonoBehaviour
         Debug.Log("Button");
         SfxManager.Instance.PlayButton();
         GameMaster.Instance.ResetGame();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

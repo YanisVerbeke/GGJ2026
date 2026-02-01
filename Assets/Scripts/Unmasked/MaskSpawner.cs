@@ -52,7 +52,7 @@ public class MaskSpawner : MonoBehaviour
 
             }
             masks.Add(Instantiate(maskPrefab, tempPos, transform.rotation, transform));
-            foreach(GameObject mask in GameObject.FindGameObjectsWithTag("mask"))
+            foreach (GameObject mask in GameObject.FindGameObjectsWithTag("mask"))
             {
                 mask.GetComponent<SpriteRenderer>().sprite = randomMasks[UnityEngine.Random.Range(0, randomMasks.Count)];
             }
@@ -108,9 +108,12 @@ public class MaskSpawner : MonoBehaviour
                     {
                         if (target.transform.parent.tag == "alien")
                         {
-                            SfxManager.Instance.PlayAlien();
-                            StartCoroutine(EndAnim(true));
-                            _endAnimLaunched = true;
+                            if (!_endAnimLaunched)
+                            {
+                                SfxManager.Instance.PlayAlien();
+                                StartCoroutine(EndAnim(true));
+                                _endAnimLaunched = true;
+                            }
                         }
                         target.SetActive(false);
                     }
