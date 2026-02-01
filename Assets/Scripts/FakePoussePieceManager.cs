@@ -75,6 +75,7 @@ public class FakePoussePieceManager : MonoBehaviour
 
     public void PlayButtonClick()
     {
+        SfxManager.Instance.PlayButton();
         if (!_hasStarted)
         {
             _hasStarted = true;
@@ -103,16 +104,19 @@ public class FakePoussePieceManager : MonoBehaviour
 
     public void QuitButtonClick()
     {
+        SfxManager.Instance.PlayButton();
         Application.Quit();
     }
 
     public void CreditButtonClick()
     {
+        SfxManager.Instance.PlayButton();
         _creditMenu.SetActive(true);
     }
 
     public void BackCreditButtonClick()
     {
+        SfxManager.Instance.PlayButton();
         _creditMenu.SetActive(false);
     }
 }

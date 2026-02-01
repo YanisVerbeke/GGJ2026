@@ -61,12 +61,13 @@ public class GameMaster : MonoBehaviour
 
     public void RestartButtonClick()
     {
+        SfxManager.Instance.PlayButton();
         ResetGame();
         SceneManager.LoadScene(0);
     }
 
     public void MenuButtonClick()
     {
-
+        SfxManager.Instance.PlayButton();
     }
 }

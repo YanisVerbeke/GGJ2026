@@ -51,6 +51,9 @@ MonoBehaviour:
   _thinking: {fileID: 8300000, guid: e933fa30a2eb65441a38adcd42e75a97, type: 3}
   _angry: {fileID: 8300000, guid: 698c8a655169ddd44b23d87ae492a7ea, type: 3}
   _alien: {fileID: 8300000, guid: 7670426af490b9c4a9f64af3f7075e83, type: 3}
+  _transiClose: {fileID: 8300000, guid: ca5dda293c3475b44b17966e35878df2, type: 3}
+  _transiOpen: {fileID: 8300000, guid: 41a70b6392b56b14faeb05c3b80c4afc, type: 3}
+  _button: {fileID: 8300000, guid: 0422be05436f4cf4cb670b4a40c1ef47, type: 3}
 --- !u!82 &5742941581062670860
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class SfxManager : MonoBehaviour
     [SerializeField] private AudioClip _thinking;
     [SerializeField] private AudioClip _angry;
     [SerializeField] private AudioClip _alien;
+    [SerializeField] private AudioClip _transiClose;
+    [SerializeField] private AudioClip _transiOpen;
+    [SerializeField] private AudioClip _button;
 
     private AudioSource _audioSource;
 
@@ -30,7 +33,7 @@ public class SfxManager : MonoBehaviour
 
     public void PlayYippee()
     {
-        _audioSource.PlayOneShot(_yippee);
+        _audioSource.PlayOneShot(_yippee, 0.8f);
     }
 
     public void PlayHonk()
@@ -56,5 +59,20 @@ public class SfxManager : MonoBehaviour
     public void PlayAlien()
     {
         _audioSource.PlayOneShot(_alien);
+    }
+
+    public void PlayTransiClose()
+    {
+        _audioSource.PlayOneShot(_transiClose, 2f);
+    }
+
+    public void PlayTransiOpen()
+    {
+        _audioSource.PlayOneShot(_transiOpen, 2f);
+    }
+
+    public void PlayButton()
+    {
+        _audioSource.PlayOneShot(_button);
     }
 }

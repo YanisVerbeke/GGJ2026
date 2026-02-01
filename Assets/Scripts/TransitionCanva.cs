@@ -24,10 +24,12 @@ public class TransitionCanva : MonoBehaviour
     public void StartTransition()
     {
         _animator.SetTrigger("In");
+        SfxManager.Instance.PlayTransiClose();
     }
 
     public void EndTransition()
     {
         _animator.SetTrigger("Out");
+        SfxManager.Instance.PlayTransiOpen();
     }
 }
