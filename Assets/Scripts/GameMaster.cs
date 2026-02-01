@@ -8,6 +8,7 @@ public class GameMaster : MonoBehaviour
 
     // Pour ajouter un mini jeu, ajouter un asset de type scriptableobject/minigame, et le mettre dans la liste
     [SerializeField] private List<MiniGameScriptableObject> _miniGameList;
+    [SerializeField] float difficultyLever;
 
     public int CurrentStageNumber { get { return _currentStageNumber; } }
     public int CurrentLives { get { return _currentLives; } }
@@ -45,9 +46,10 @@ public class GameMaster : MonoBehaviour
     public void EndMiniGame(bool won)
     {
         // To do inscrease difficulty etc 
-        // Fonction à appeler lorsque la condition de victoire ou de défaite est atteinte dans le mini game en cours
+        // Fonction ï¿½ appeler lorsque la condition de victoire ou de dï¿½faite est atteinte dans le mini game en cours
 
         _currentStageNumber++;
+        Time.timeScale = Time.timeScale + (difficultyLever * _currentStageNumber);
         if (!won)
         {
             _currentLives--;
