@@ -35,7 +35,7 @@ public class SfxManager : MonoBehaviour
 
     public void PlayHonk()
     {
-        _audioSource.PlayOneShot(_honk, 5f);
+        _audioSource.PlayOneShot(_honk, 3f);
     }
 
     public void PlayCoin()
@@ -45,12 +45,12 @@ public class SfxManager : MonoBehaviour
 
     public void PlayThinking()
     {
-        _audioSource.PlayOneShot(_thinking);
+        _audioSource.PlayOneShot(_thinking, 3f);
     }
 
     public void PlayAngry()
     {
-        _audioSource.PlayOneShot(_angry);
+        _audioSource.PlayOneShot(_angry, 3f);
     }
 
     public void PlayAlien()
