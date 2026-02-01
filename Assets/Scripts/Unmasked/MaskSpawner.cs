@@ -21,6 +21,7 @@ public class MaskSpawner : MonoBehaviour
     Image _timerImage;
     private TextMeshProUGUI _endText;
     float _timer;
+    [SerializeField] List<Sprite> randomMasks;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -51,6 +52,10 @@ public class MaskSpawner : MonoBehaviour
 
             }
             masks.Add(Instantiate(maskPrefab, tempPos, transform.rotation, transform));
+            foreach(GameObject mask in GameObject.FindGameObjectsWithTag("mask"))
+            {
+                mask.GetComponent<SpriteRenderer>().sprite = randomMasks[UnityEngine.Random.Range(0, randomMasks.Count)];
+            }
         }
         TransitionCanva.Instance.EndTransition();
     }

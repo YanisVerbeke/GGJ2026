@@ -39,11 +39,12 @@ public class GameMaster : MonoBehaviour
         ResetGame();
     }
 
-    private void ResetGame()
+    public void ResetGame()
     {
         _currentStageNumber = 1;
         _currentDifficultyLevel = 1;
         _currentLives = 4;
+        weightedMiniGameList = new Dictionary<MiniGameScriptableObject, int>();
         foreach (MiniGameScriptableObject miniGame in MiniGameList)
         {
             weightedMiniGameList.Add(miniGame, 1);
@@ -67,8 +68,9 @@ public class GameMaster : MonoBehaviour
 
     public void RestartButtonClick()
     {
+        Debug.Log("Button");
         SfxManager.Instance.PlayButton();
-        ResetGame();
+        Instance.ResetGame();
         SceneManager.LoadScene(0);
     }
 
