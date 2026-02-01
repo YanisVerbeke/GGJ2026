@@ -120,8 +120,6 @@ public class ShopManager : MonoBehaviour
             _sushiSprite.sprite = _sushiPoContent;
             SfxManager.Instance.PlayHonk();
         }
-
-
         yield return new WaitForSeconds(2f);
 
         TransitionCanva.Instance.StartTransition();

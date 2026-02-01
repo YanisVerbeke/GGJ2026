@@ -720,8 +720,8 @@ Camera:
   m_GameObject: {fileID: 961739749}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6367924, g: 0.8060557, b: 0.8490566, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -806,11 +806,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3caa1a3f04af1e1aab30f30ca28dc54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  numberOfMasks: 10
+  numberOfMasks: 8
   maskPrefab: {fileID: 2696864907719244022, guid: e1ab44ed482017a1a9af1a581046f707, type: 3}
   masks: []
   alienFace: {fileID: 21300000, guid: 1305c8432bc83cb4ca89c7ab3d42d99b, type: 3}
   maxTimer: 5
+  randomMasks:
+  - {fileID: 21300000, guid: ac67a3e8b72237ee38cb35709d29663a, type: 3}
+  - {fileID: 21300000, guid: 95c27befe09a0a98d9bad831fe30ae48, type: 3}
+  - {fileID: 21300000, guid: fc22873c77b0c1f4a8497b1386c1695e, type: 3}
+  - {fileID: 21300000, guid: f443af7e47cd21848b00e85cdf13ea09, type: 3}
+  - {fileID: 21300000, guid: 36eb25814a2ae1049a644e084a587de5, type: 3}
 --- !u!4 &1034741780
 Transform:
   m_ObjectHideFlags: 0
