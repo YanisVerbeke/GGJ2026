@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Catch.unity
     guid: c66a33652e58308478dc3cba83857873
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c67d35ed87858ed4c9422904e6f81ddc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

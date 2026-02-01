@@ -15,10 +15,9 @@ public class GameMaster : MonoBehaviour
     public int CurrentStageNumber { get { return _currentStageNumber; } }
     public int CurrentLives { get { return _currentLives; } }
     public List<MiniGameScriptableObject> MiniGameList { get { return _miniGameList; } }
-    public Dictionary<MiniGameScriptableObject,int> weightedMiniGameList = new Dictionary<MiniGameScriptableObject, int>();
+    public Dictionary<MiniGameScriptableObject, int> weightedMiniGameList = new Dictionary<MiniGameScriptableObject, int>();
 
     private int _currentStageNumber;
-    private int _currentDifficultyLevel;
     private int _currentLives;
 
     private void Awake()
@@ -42,7 +41,6 @@ public class GameMaster : MonoBehaviour
     public void ResetGame()
     {
         _currentStageNumber = 1;
-        _currentDifficultyLevel = 1;
         _currentLives = 4;
         weightedMiniGameList = new Dictionary<MiniGameScriptableObject, int>();
         foreach (MiniGameScriptableObject miniGame in MiniGameList)
@@ -66,18 +64,7 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public void RestartButtonClick()
-    {
-        Debug.Log("OUI");
-        SfxManager.Instance.PlayButton();
-        Instance.ResetGame();
-        SceneManager.LoadScene(1);
-    }
 
-    public void MenuButtonClick()
-    {
-        SfxManager.Instance.PlayButton();
-    }
 
     public MiniGameScriptableObject MiniGameChoice()
     {

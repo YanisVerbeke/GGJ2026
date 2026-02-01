@@ -64,10 +64,10 @@ public class CatchManager : MonoBehaviour
         if (_mashCounter <= 0 && _state != State.END)
         {
             // WIN
-            _state = State.END;
-            _animator.SetTrigger("End");
             if (!_isEndAnimLaunched)
             {
+                _state = State.END;
+                _animator.SetTrigger("End");
                 StartCoroutine(EndAnim(true));
                 _isEndAnimLaunched = true;
             }
