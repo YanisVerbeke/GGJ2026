@@ -9,6 +9,7 @@ public class FakePoussePieceManager : MonoBehaviour
     private TextMeshProUGUI _endText;
     private bool _hasStarted = false;
     [SerializeField] private GameObject _trueMenu;
+    [SerializeField] private AudioClip _goatClip;
 
     private void Awake()
     {
@@ -25,10 +26,12 @@ public class FakePoussePieceManager : MonoBehaviour
         if (won)
         {
             _endText.text = "Bravo !";
+            SfxManager.Instance.PlayYippee();
         }
         else
         {
             _endText.text = "Dommage...";
+            SfxManager.Instance.PlayHonk();
         }
         _endText.enabled = true;
 
@@ -36,7 +39,13 @@ public class FakePoussePieceManager : MonoBehaviour
 
         TransitionCanva.Instance.StartTransition();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
+
+        GameObject.Find("SfxManager").GetComponent<AudioSource>().PlayOneShot(_goatClip, 2f);
+
+        yield return new WaitForSeconds(1f);
+
+        MusicManager.Instance.StartMusic();
 
         _trueMenu.SetActive(true);
         TransitionCanva.Instance.EndTransition();

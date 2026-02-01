@@ -63,10 +63,12 @@ public class PoussePieceManager : MonoBehaviour
         if (won)
         {
             _endText.text = "Bravo !";
+            SfxManager.Instance.PlayYippee();
         }
         else
         {
             _endText.text = "Dommage...";
+            SfxManager.Instance.PlayHonk();
         }
         _endText.enabled = true;
 

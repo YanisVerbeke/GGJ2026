@@ -32,6 +32,8 @@ public class ShopManager : MonoBehaviour
         _orderImage = GameObject.Find("OrderImage").GetComponent<Image>();
         _orderImage.enabled = false;
         _sushiSprite = GameObject.Find("SushiSprite").GetComponent<SpriteRenderer>();
+
+        SfxManager.Instance.PlayThinking();
     }
 
     private void OnEnable()
@@ -109,11 +111,14 @@ public class ShopManager : MonoBehaviour
             // Sushi content
             _sushiSprite.sprite = _sushiContent;
             _masksForSushi[keyOrdered - 1].gameObject.SetActive(true);
+            SfxManager.Instance.PlayYippee();
         }
         else
         {
             // Sushi po content
+            SfxManager.Instance.PlayAngry();
             _sushiSprite.sprite = _sushiPoContent;
+            SfxManager.Instance.PlayHonk();
         }
 
 

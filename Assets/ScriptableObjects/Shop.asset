@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shop
   m_EditorClassIdentifier: Assembly-CSharp::MiniGameScriptableObject
   indexInBuild: 2
-  displayName: Shop
+  displayName: Sushi Shop
   controls: 1
   timer: 10

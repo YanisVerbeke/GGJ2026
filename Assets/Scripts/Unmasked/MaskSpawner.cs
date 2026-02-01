@@ -16,30 +16,31 @@ public class MaskSpawner : MonoBehaviour
     void Start()
     {
         tempPos = RandomPos();
-        masks.Add(Instantiate(maskPrefab,tempPos, transform.rotation, transform));
+        masks.Add(Instantiate(maskPrefab, tempPos, transform.rotation, transform));
         masks[0].tag = "alien";
         for (int i = 0; i < numberOfMasks - 1; i++)
         {
             tempPos = RandomPos();
             foreach (GameObject mask in masks)
             {
-                while(
+                while (
                     Mathf.RoundToInt(tempPos.x) == Mathf.RoundToInt(mask.transform.position.x) ||
                     Mathf.RoundToInt(tempPos.y) == Mathf.RoundToInt(mask.transform.position.y)
                     )
                 {
                     tempPos = RandomPos();
                 }
-                    
+
             }
             masks.Add(Instantiate(maskPrefab, tempPos, transform.rotation, transform));
         }
+        TransitionCanva.Instance.EndTransition();
     }
 
     Vector3 RandomPos()
     {
         float xPos;
-        float yPos; 
+        float yPos;
         xPos = UnityEngine.Random.Range(-7f, 7f);
         yPos = UnityEngine.Random.Range(-2.5f, 2.5f);
         return new Vector3(xPos, yPos, 0);
@@ -49,16 +50,16 @@ public class MaskSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             //Debug.Log("Click registered");
             target = RaycastDetection();
             if (target != null)
             {
-                if(target.tag == "mask")
+                if (target.tag == "mask")
                 {
                     //Debug.Log("Mask hit");
-                    targetPos = new Vector3 (
+                    targetPos = new Vector3(
                         Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
                         Camera.main.ScreenToWorldPoint(Input.mousePosition).y, -0.1f);
                     parentPos = new Vector3(
@@ -67,10 +68,11 @@ public class MaskSpawner : MonoBehaviour
                     moveVector = targetPos - parentPos;
                     moveVector = Vector3.ClampMagnitude(moveVector, 2f);
                     target.transform.localPosition = moveVector;
-                    if(target.transform.localPosition.magnitude >= 1.5f)
+                    if (target.transform.localPosition.magnitude >= 1.5f)
                     {
-                        if(target.transform.parent.tag == "alien")
+                        if (target.transform.parent.tag == "alien")
                         {
+                            SfxManager.Instance.PlayYippee();
                             GameMaster.Instance.EndMiniGame(true);
                         }
                         target.SetActive(false);
@@ -85,9 +87,9 @@ public class MaskSpawner : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit raycastHit;
 
-        if(Physics.Raycast(ray, out raycastHit,200f))
+        if (Physics.Raycast(ray, out raycastHit, 200f))
         {
-            if(raycastHit.transform != null)
+            if (raycastHit.transform != null)
             {
                 //Debug.Log("Ray hit");
                 return raycastHit.transform.gameObject;

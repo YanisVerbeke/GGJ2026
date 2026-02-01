@@ -12,24 +12,19 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] int lastBuildIndex;
     TextMeshProUGUI stageNumberText;
     TextMeshProUGUI stageNameText;
-    //TextMeshProUGUI instructionsText;
     TextMeshProUGUI commandsText;
-    int stageNumber = 0;
-    bool isCommandsShowing = false;
-    //string currentGameName;
-    int nextGameIndex;
-    int currentGameIndex;
     private Image _life1;
     private Image _life2;
     private Image _life3;
     private Image _life4;
+    [SerializeField] private Sprite _lifeIcon;
+    [SerializeField] private Sprite _brokenLifeIcon;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         stageNumberText = GameObject.Find("Stage number").GetComponent<TextMeshProUGUI>();
         stageNameText = GameObject.Find("Stage Name").GetComponent<TextMeshProUGUI>();
-        //instructionsText = GameObject.Find("Instructions").GetComponent<TextMeshProUGUI>();
         commandsText = GameObject.Find("Commands").GetComponent<TextMeshProUGUI>();
         _life1 = GameObject.Find("Life1").GetComponent<Image>();
         _life2 = GameObject.Find("Life2").GetComponent<Image>();
@@ -48,39 +43,8 @@ public class SceneLoader : MonoBehaviour
 
     private void OnEnable()
     {
-        TransitionCanva.Instance.EndTransition();
+        //TransitionCanva.Instance.EndTransition();
     }
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isCommandsShowing)
-            {
-                SceneManager.LoadScene(currentGameIndex);
-            }
-            stageNumber++;
-            nextGameIndex = UnityEngine.Random.Range(1, lastBuildIndex + 1);
-            InstructionShowing(nextGameIndex);
-            currentGameIndex = nextGameIndex;
-        }
-    }*/
-
-    /*void InstructionShowing(int index)
-    {
-        stageNumberText.text = stageNumber.ToString();
-        switch (index)
-        {
-            case 1:
-                instructionsText.text = "Pousse le masque !";
-                commandsText.text = "Click : met une piece\nGlisse la souris : Deplace ou la piece va tomber";
-                isCommandsShowing = true;
-                break;
-            default:
-                break;
-        }
-    }*/
 
     public void StartNextMiniGame(MiniGameScriptableObject miniGame)
     {
@@ -123,7 +87,7 @@ public class SceneLoader : MonoBehaviour
         stageNumberText.enabled = false;
         stageNameText.enabled = false;
 
-        TransitionCanva.Instance.StartTransition();
+        //TransitionCanva.Instance.StartTransition();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -136,10 +100,14 @@ public class SceneLoader : MonoBehaviour
 
     private void DisplayLives()
     {
-        _life1.enabled = GameMaster.Instance.CurrentLives > 3 ? true : false;
-        _life2.enabled = GameMaster.Instance.CurrentLives > 2 ? true : false;
-        _life3.enabled = GameMaster.Instance.CurrentLives > 1 ? true : false;
-        _life4.enabled = GameMaster.Instance.CurrentLives > 0 ? true : false;
+        _life1.enabled = true;
+        _life2.enabled = true;
+        _life3.enabled = true;
+        _life4.enabled = true;
+        _life1.sprite = GameMaster.Instance.CurrentLives > 3 ? _lifeIcon : _brokenLifeIcon;
+        _life2.sprite = GameMaster.Instance.CurrentLives > 2 ? _lifeIcon : _brokenLifeIcon;
+        _life3.sprite = GameMaster.Instance.CurrentLives > 1 ? _lifeIcon : _brokenLifeIcon;
+        _life4.sprite = GameMaster.Instance.CurrentLives > 0 ? _lifeIcon : _brokenLifeIcon;
     }
 
 }
