@@ -73,10 +73,10 @@ public class SceneLoader : MonoBehaviour
         switch (miniGame.controls)
         {
             case Controls.MOUSE:
-                commandsText.text = "� ta souris !";
+                commandsText.text = "À ta souris !";
                 break;
             case Controls.KEYBOARD:
-                commandsText.text = "� ton clavier !";
+                commandsText.text = "À ton clavier !";
                 break;
             default:
                 commandsText.text = "";

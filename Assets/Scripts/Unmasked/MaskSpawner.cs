@@ -29,7 +29,7 @@ public class MaskSpawner : MonoBehaviour
         _endText = GameObject.Find("endText").GetComponent<TextMeshProUGUI>();
         _endText.enabled = false;
     }
-    
+
     void Start()
     {
         tempPos = RandomPos();
@@ -72,7 +72,8 @@ public class MaskSpawner : MonoBehaviour
         {
             _timer -= Time.deltaTime;
             _timerImage.fillAmount = (_timer / maxTimer);
-        } else
+        }
+        else
         {
             if (!_endAnimLaunched)
             {
@@ -102,6 +103,7 @@ public class MaskSpawner : MonoBehaviour
                     {
                         if (target.transform.parent.tag == "alien")
                         {
+                            SfxManager.Instance.PlayAlien();
                             StartCoroutine(EndAnim(true));
                             _endAnimLaunched = true;
                         }

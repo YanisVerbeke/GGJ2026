@@ -22,6 +22,11 @@ public class FakePoussePieceManager : MonoBehaviour
         _creditMenu.SetActive(false);
     }
 
+    private void Start()
+    {
+        MusicManager.Instance.StartPoussePieceMusic();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z)) // W
@@ -49,6 +54,7 @@ public class FakePoussePieceManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         TransitionCanva.Instance.StartTransition();
+        MusicManager.Instance.StopMusic();
 
         yield return new WaitForSeconds(2f);
 
@@ -56,7 +62,7 @@ public class FakePoussePieceManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        MusicManager.Instance.StartMusic();
+        MusicManager.Instance.StartMainMusic();
 
         _trueMenu.SetActive(true);
         TransitionCanva.Instance.EndTransition();

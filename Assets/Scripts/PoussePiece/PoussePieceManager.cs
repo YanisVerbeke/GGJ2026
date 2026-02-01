@@ -23,6 +23,7 @@ public class PoussePieceManager : MonoBehaviour
     private void OnEnable()
     {
         TransitionCanva.Instance.EndTransition();
+        MusicManager.Instance.StartPoussePieceMusic();
     }
 
     private void Update()
@@ -83,6 +84,7 @@ public class PoussePieceManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        MusicManager.Instance.StartMainMusic();
         GameMaster.Instance.EndMiniGame(won);
 
         yield return null;
