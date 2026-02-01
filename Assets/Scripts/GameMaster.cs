@@ -1,6 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameMaster : MonoBehaviour
     public int CurrentStageNumber { get { return _currentStageNumber; } }
     public int CurrentLives { get { return _currentLives; } }
     public List<MiniGameScriptableObject> MiniGameList { get { return _miniGameList; } }
+    public Dictionary<MiniGameScriptableObject,int> weightedMiniGameList = new Dictionary<MiniGameScriptableObject, int>();
 
     private int _currentStageNumber;
     private int _currentDifficultyLevel;
@@ -42,6 +44,10 @@ public class GameMaster : MonoBehaviour
         _currentStageNumber = 1;
         _currentDifficultyLevel = 1;
         _currentLives = 4;
+        foreach (MiniGameScriptableObject miniGame in MiniGameList)
+        {
+            weightedMiniGameList.Add(miniGame, 1);
+        }
     }
 
     public void EndMiniGame(bool won)
@@ -69,5 +75,25 @@ public class GameMaster : MonoBehaviour
     public void MenuButtonClick()
     {
         SfxManager.Instance.PlayButton();
+    }
+
+    public MiniGameScriptableObject MiniGameChoice()
+    {
+        List<MiniGameScriptableObject> miniGames = new List<MiniGameScriptableObject>();
+        int randomInt;
+        foreach (MiniGameScriptableObject miniGame in weightedMiniGameList.Keys)
+        {
+            for (int i = 0; i < weightedMiniGameList[miniGame]; i++)
+            {
+                miniGames.Add(miniGame);
+            }
+        }
+        foreach (MiniGameScriptableObject miniGame in MiniGameList)
+        {
+            weightedMiniGameList[miniGame]++;
+        }
+        randomInt = Random.Range(0, miniGames.Count);
+        weightedMiniGameList[miniGames[randomInt]] = 0;
+        return miniGames[randomInt];
     }
 }

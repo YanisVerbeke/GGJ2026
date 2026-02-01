@@ -20,6 +20,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Sprite _lifeIcon;
     [SerializeField] private Sprite _brokenLifeIcon;
     private GameObject _gameOverMenu;
+    int _miniGameChoice;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,8 +41,8 @@ public class SceneLoader : MonoBehaviour
         _life4.enabled = false;
         _gameOverMenu = GameObject.Find("GameOverMenu");
         _gameOverMenu.SetActive(false);
-
-        StartNextMiniGame(GameMaster.Instance.MiniGameList[Random.Range(0, GameMaster.Instance.MiniGameList.Count)]);
+        //StartNextMiniGame(GameMaster.Instance.MiniGameList[Random.Range(0, GameMaster.Instance.MiniGameList.Count)]);
+        StartNextMiniGame(GameMaster.Instance.MiniGameChoice());
     }
 
     private void OnEnable()
@@ -72,10 +73,10 @@ public class SceneLoader : MonoBehaviour
         switch (miniGame.controls)
         {
             case Controls.MOUSE:
-                commandsText.text = "À ta souris !";
+                commandsText.text = "ï¿½ ta souris !";
                 break;
             case Controls.KEYBOARD:
-                commandsText.text = "À ton clavier !";
+                commandsText.text = "ï¿½ ton clavier !";
                 break;
             default:
                 commandsText.text = "";
