@@ -9,6 +9,7 @@ public class FakePoussePieceManager : MonoBehaviour
     private TextMeshProUGUI _endText;
     private bool _hasStarted = false;
     [SerializeField] private GameObject _trueMenu;
+    [SerializeField] private GameObject _creditMenu;
     [SerializeField] private AudioClip _goatClip;
 
     private void Awake()
@@ -17,6 +18,16 @@ public class FakePoussePieceManager : MonoBehaviour
         _endText.enabled = false;
         Time.timeScale = 0;
         GameObject.Find("PoussePiece").GetComponent<CoinSpawner>().enabled = false;
+        _trueMenu.SetActive(false);
+        _creditMenu.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z)) // W
+        {
+            WinMiniGame();
+        }
     }
 
     private IEnumerator EndAnim(bool won)
@@ -97,6 +108,11 @@ public class FakePoussePieceManager : MonoBehaviour
 
     public void CreditButtonClick()
     {
-        // ouais ouais ouais
+        _creditMenu.SetActive(true);
+    }
+
+    public void BackCreditButtonClick()
+    {
+        _creditMenu.SetActive(false);
     }
 }

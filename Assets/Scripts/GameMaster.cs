@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -53,12 +54,19 @@ public class GameMaster : MonoBehaviour
         if (!won)
         {
             _currentLives--;
-            if (_currentLives <= 0)
-            {
-                // GAME OVEEEEEER #notyippee
-            }
         }
         SceneManager.LoadScene(0);
+
+    }
+
+    public void RestartButtonClick()
+    {
+        ResetGame();
+        SceneManager.LoadScene(0);
+    }
+
+    public void MenuButtonClick()
+    {
 
     }
 }

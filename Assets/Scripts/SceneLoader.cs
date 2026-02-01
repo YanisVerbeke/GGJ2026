@@ -19,6 +19,7 @@ public class SceneLoader : MonoBehaviour
     private Image _life4;
     [SerializeField] private Sprite _lifeIcon;
     [SerializeField] private Sprite _brokenLifeIcon;
+    private GameObject _gameOverMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,8 @@ public class SceneLoader : MonoBehaviour
         _life2.enabled = false;
         _life3.enabled = false;
         _life4.enabled = false;
+        _gameOverMenu = GameObject.Find("GameOverMenu");
+        _gameOverMenu.SetActive(false);
 
         StartNextMiniGame(GameMaster.Instance.MiniGameList[Random.Range(0, GameMaster.Instance.MiniGameList.Count)]);
     }
@@ -48,7 +51,16 @@ public class SceneLoader : MonoBehaviour
 
     public void StartNextMiniGame(MiniGameScriptableObject miniGame)
     {
-        StartCoroutine(StartAnim(miniGame));
+        if (GameMaster.Instance.CurrentLives > 0)
+        {
+            StartCoroutine(StartAnim(miniGame));
+        }
+        else
+        {
+            // Display game over
+            _gameOverMenu.SetActive(true);
+        }
+
     }
 
     IEnumerator StartAnim(MiniGameScriptableObject miniGame)
