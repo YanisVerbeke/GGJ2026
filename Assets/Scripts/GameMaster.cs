@@ -68,7 +68,7 @@ public class GameMaster : MonoBehaviour
 
     public void RestartButtonClick()
     {
-        Debug.Log("Button");
+        Debug.Log("OUI");
         SfxManager.Instance.PlayButton();
         Instance.ResetGame();
         SceneManager.LoadScene(0);

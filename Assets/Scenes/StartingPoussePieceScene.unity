@@ -18038,7 +18038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -208, y: 164}
+  m_AnchoredPosition: {x: -161, y: 164}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239092502
@@ -19723,7 +19723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Thomas jsp
+  m_text: Thomas Chapeau
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e37502a404e52f44bebbb94cbb9c81a, type: 2}
   m_sharedMaterial: {fileID: -8852775117762101923, guid: 1e37502a404e52f44bebbb94cbb9c81a, type: 2}
