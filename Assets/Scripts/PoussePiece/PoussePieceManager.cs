@@ -30,13 +30,18 @@ public class PoussePieceManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z)) // W parce que qwerty etc
         {
             // debug win
-            GameMaster.Instance.EndMiniGame(true);
+            WinMiniGame();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
             // debug lose
-            GameMaster.Instance.EndMiniGame(false);
+            if (!_endAnimLaunched)
+            {
+                // Loose Mini Game
+                StartCoroutine(EndAnim(false));
+                _endAnimLaunched = true;
+            }
         }
 
 

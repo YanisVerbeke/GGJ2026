@@ -746,6 +746,7 @@ MonoBehaviour:
   _miniGameList:
   - {fileID: 11400000, guid: 570630596ac7eb041be11596d2c62550, type: 2}
   - {fileID: 11400000, guid: fbaaf70a8b85456d8b47f0817a783dc9, type: 2}
+  - {fileID: 11400000, guid: 1bbcb14fe6dd12241b22235529746c62, type: 2}
   difficultyLever: 0
 --- !u!1 &661039370
 GameObject:
