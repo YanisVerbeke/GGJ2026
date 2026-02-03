@@ -18,6 +18,6 @@ public class ButtonHelper : MonoBehaviour
         GameMaster.Instance.ResetGame();
         // normalement il faudrait mettre une corroutine pour l'anim des rideaux comme les mini-jeux, 
         // mais vu qu'il est sur un canva au dessus de celui des rideaux on peut pas, pas grave
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(0);
     }
 }
